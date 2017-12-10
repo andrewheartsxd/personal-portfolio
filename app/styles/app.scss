@@ -1,0 +1,35 @@
+@import 'bootstrap';
+@import 'partials/footer';
+
+body {
+  padding-top: 20px;
+}
+
+.section-title {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2d7788;
+  position: relative;
+}
+
+.company {
+  color: #97AAC3;
+}
+
+.upper-row {
+  position: relative;
+}
+
+.job-title {
+  color: #3F4650;
+  font-size: 16px;
+}
+
+.time {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #97AAC3;
+}
+

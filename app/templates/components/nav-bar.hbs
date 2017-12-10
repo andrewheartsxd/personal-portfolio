@@ -1,0 +1,34 @@
+<nav class="container navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    {{#link-to 'index' class="navbar-brand"}}Andrew Hwang{{/link-to}}
+  </div>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="nav navbar-nav">
+      {{!-- {{#nav-link-to 'index'}}Andrew Hwang{{/nav-link-to}} --}}
+      {{#nav-link-to 'projects'}}Projects{{/nav-link-to}}
+      {{#nav-link-to 'resume'}}Resume{{/nav-link-to}}
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      {{#nav-link-to 'about'}}About{{/nav-link-to}}
+      {{#nav-link-to 'contact'}}Contact{{/nav-link-to}}
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Admin<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          {{!-- {{#nav-link-to 'admin.invitations'}}Invitations{{/nav-link-to}} --}}
+          {{!-- {{#nav-link-to 'admin.contacts'}}Contacts{{/nav-link-to}} --}}
+          {{!-- {{#nav-link-to 'admin.seeder'}}Seeder{{/nav-link-to}} --}}
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
