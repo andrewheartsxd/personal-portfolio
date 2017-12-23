@@ -1,13 +1,48 @@
-@import 'bootstrap';
+@import 'ember-bootstrap/bootstrap';
+@import 'partials/navbar';
 @import 'partials/footer';
+@import 'partials/animations';
+@import 'partials/index';
+// Google Fonts
+@import url(http://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700);
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
 
 body {
-  padding-top: 20px;
+  font-family: Roboto, sans-serif;
 }
+
+body > .ember-view {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.font-200 {
+  font-weight: 200;
+}
+
+.font-300 {
+  font-weight: 300;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+//////////////////////
 
 .section-title {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   color: #2d7788;
   position: relative;
@@ -24,6 +59,8 @@ body {
 .job-title {
   color: #3F4650;
   font-size: 16px;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 
 .time {

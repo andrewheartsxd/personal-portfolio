@@ -1,0 +1,20 @@
+.bg {
+  background-image: url("/assets/images/hongkong1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  animation-duration: 1s; 
+  animation-delay: 0.5s; 
+  font-size: 5.5rem;
+  text-transform: uppercase;
+}
+
+.subheader {
+  animation-duration: 1s; 
+  animation-delay: 0.7s; 
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
