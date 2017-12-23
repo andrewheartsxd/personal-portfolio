@@ -1,9 +1,14 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  //width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
+  padding: $navbar-padding-y $navbar-padding-x;
+}
+
+.shadow {
+  box-shadow: 0 -2px 5px 0 rgba(0,0,0,.16), 0 -2px 10px 0 rgba(0,0,0,.12);
+}
+
+.footer-icon-size {
+  padding-top: $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
+  margin-right: $navbar-padding-x;
+  font-size: $navbar-brand-font-size;
 }
