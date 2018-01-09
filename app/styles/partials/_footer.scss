@@ -21,3 +21,26 @@
 .footer-image {
   height: 1.25rem; 
 }
+
+.footer-left {
+  text-align: center;
+}
+
+.footer-mid {
+  text-align: center;
+}
+
+.footer-right {
+  justify-content: center;
+}
+
+@include media-breakpoint-up(sm) {
+  .footer-left {
+    text-align: left;
+  }
+
+  .footer-right {
+    justify-content: flex-end;
+  }
+
+}

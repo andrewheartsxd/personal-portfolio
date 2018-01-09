@@ -1,18 +1,17 @@
 <div class="container flex-grow mt-5">
   <div class="jumbotron">
-    <div class="form">
-      <div class={{if model.emailIsValid "form-group has-feedback row has-success" "form-group has-feedback row"}}>
+    <form>
+      <div class={{if model.emailIsValid "form-group row is-valid" "form-group row"}}>
         <div class="col-sm-6">
           <label for="inputEmail">
             Email Address
           </label>
           <div class="input-group">
-            <div class="input-group-addon">
-              <i class="fa fa-envelope-o"></i>
-            </div>
+            <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
             {{input type="email" id="inputEmail" class="form-control" value=model.email placeholder="Your e-mail address" autofocus="autofocus"}}
-            {{!-- <span class={{if model.emailIsValid "glyphicon glyphicon-ok form-control-feedback has-success" "d-none"}} aria-hidden="true"></span> --}}
-            <span class={{if model.emailIsValid "fa fa-check form-control-feedback has-success" "d-none"}} aria-hidden="true"></span>
+            <div class={{if model.emailIsValid "" "invisible"}}>
+              <div class={{if model.emailIsValid "fa fa-check form-control-feedback has-success vertical-align-middle-webkit vertical-align-middle-moz" ""}} aria-hidden="true"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -32,6 +31,6 @@
       {{#if responseMessage}}
         <div class="alert alert-success">{{responseMessage}}</div>
       {{/if}}
-    </div>
+    </form>
   </div>
 </div>

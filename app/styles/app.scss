@@ -71,3 +71,10 @@ body > .ember-view {
   color: #97AAC3;
 }
 
+.vertical-align-middle-webkit {
+  vertical-align: -webkit-baseline-middle;
+}
+
+.vertical-align-middle-moz {
+  vertical-align: -moz-middle-with-baseline;
+}

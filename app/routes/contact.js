@@ -9,12 +9,14 @@ export default Route.extend({
   actions: {
 
     submitMessage(newMessage) {
-      newMessage.save().then((newMessage) => {
-        let email = newMessage.get('email');
-        this.controller.set('responseMessage', `Thank you! We've received your message from: ${email}`);
-        newMessage.set('email', '');
-        newMessage.set('message', '');
-      });
+      let email = newMessage.get('email');
+      this.controller.set('responseMessage', `Thank you! We've received your message from: ${email}`);
+      //newMessage.save().then((newMessage) => {
+        //let email = newMessage.get('email');
+        //this.controller.set('responseMessage', `Thank you! We've received your message from: ${email}`);
+        //newMessage.set('email', '');
+        //newMessage.set('message', '');
+      //});
     },
 
     willTransition() {
