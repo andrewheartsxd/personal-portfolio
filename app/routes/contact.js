@@ -6,6 +6,10 @@ export default Route.extend({
     return this.store.createRecord('contact');
   },
 
+  setupController: function (controller, model) {
+    controller.set('contact', model);
+  },
+
   actions: {
 
     submitMessage(newMessage) {

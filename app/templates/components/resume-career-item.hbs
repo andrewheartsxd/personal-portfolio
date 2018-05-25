@@ -1,0 +1,60 @@
+<div class="d-flex flex-row">
+  <button class="align-self-start" {{action deleteResumeCareerItem resumeCareerItem}}>{{fa-icon 'trash'}}</button>
+  <div class="item">
+    <div class="upper-row">
+      {{!-- Job Title --}}
+      {{#if resumeCareerItem.isEditingJobTitle}}
+        <form {{action saveEdit resumeCareerItem on='submit'}}>
+          <h3 class="job-title">{{input value=resumeCareerItem.jobTitle}}</h3>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button class="btn btn-danger" {{action 'cancelJobTitleEdit' resumeCareerItem}}>Cancel</button>
+          </div>
+        </form>
+      {{else}}
+        <div class="d-flex flex-row justify-content-start">
+          <h3 class="job-title" {{action 'editJobTitle' resumeCareerItem}}>{{resumeCareerItem.jobTitle}}</h3>
+          {{!-- Start Date - End Date --}}
+          {{!-- <div class="time ml-auto">{{resumeCareerItem.startDate}} - {{resumeCareerItem.endDate}}</div> --}}
+          <div class="time ml-auto">Test - Test</div>
+        </div>
+      {{/if}}
+    </div>
+    {{!-- Company - CompanyLocation --}}
+    {{#if resumeCareerItem.isEditingCompanyLocation}}
+      <div class="company">
+        <form {{action saveEdit resumeCareerItem on='submit'}}>
+          {{input value=resumeCareerItem.company}} - {{input value=resumeCareerItem.location}}
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button class="btn btn-danger" {{action 'cancelCompanyLocationEdit' resumeCareerItem}}>Cancel</button>
+          </div>
+        </form>
+      </div>
+    {{else}}
+      <div class="company" {{action 'editCompanyLocation' resumeCareerItem}}>{{resumeCareerItem.company}} - {{resumeCareerItem.location}}</div>
+    {{/if}}
+    {{!-- Details --}}
+    <div class="details">
+      <ul>
+        {{#each jobDescriptions as |description|}}
+          {{#if description.isEditing}}
+            <li>
+              <form {{action saveEdit resumeCareerItem on='submit'}}>
+                {{input value=description.text}}
+                {{!-- <div class="input-group-btn"> --}}
+                  <button type="submit" class="btn btn-success">Save</button>
+                  <button class="btn btn-danger" {{action 'cancelJobDescriptionEdit' description}}>Cancel</button>
+                  <button class="btn" {{action deleteJobDescription description resumeCareerItem}}>{{fa-icon 'trash'}}</button>
+                {{!-- </div> --}}
+              </form>
+            </li>
+          {{else}}
+            <li {{action 'editJobDescription' description}}>{{description.text}}</li>
+          {{/if}}
+        {{/each}}
+        <li>{{input value=newDescription}}<button {{action 'addJobDescription' newDescription resumeCareerItem}}>{{fa-icon "plus"}}</button></li>
+      </ul>
+    </div>
+  </div>
+</div>

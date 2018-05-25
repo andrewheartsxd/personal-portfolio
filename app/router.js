@@ -11,6 +11,10 @@ Router.map(function() {
   this.route('contact');
   this.route('resume');
   this.route('projects');
+
+  this.route('admin', function() {
+    this.route('resume');
+  });
 });
 
 export default Router;

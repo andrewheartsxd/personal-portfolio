@@ -1,36 +1,56 @@
 <div class="container flex-grow mt-5">
   <div class="jumbotron">
-    <form>
-      <div class={{if model.emailIsValid "form-group row is-valid" "form-group row"}}>
-        <div class="col-sm-6">
-          <label for="inputEmail">
-            Email Address
-          </label>
-          <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
-            {{input type="email" id="inputEmail" class="form-control" value=model.email placeholder="Your e-mail address" autofocus="autofocus"}}
-            <div class={{if model.emailIsValid "" "invisible"}}>
-              <div class={{if model.emailIsValid "fa fa-check form-control-feedback has-success vertical-align-middle-webkit vertical-align-middle-moz" ""}} aria-hidden="true"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class={{if messageIsValid "form-group has-feedback row has-success" "form-group has-feedback row"}}>
-        <div class="col-sm-10">
-          <label for="inputMessage">Message</label>
-          {{textarea id="inputMessage" class="form-control" value=model.message placeholder="Your message (At least 5 characters)" rows=7}}
-          <span class={{if model.messageIsValid "fa fa-check form-control-feedback has-success message-feedback-icon"}} aria-hidden="true"></span>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-4">
-          <button class="btn btn-primary btn-block" disabled={{unless model.isValid true false}} {{action 'submitMessage' model}}>Submit</button>
-        </div>
-      </div>
+    {{!-- <form> --}}
+      {{!-- <div class={{if model.emailIsValid "form-group row" "form-group row"}}> --}}
+        {{!-- <div class="col-sm-6"> --}}
+          {{!-- <label for="inputEmail">Email Address</label> --}}
+          {{!-- <div class="input-group"> --}}
+            {{!-- <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div> --}}
+            {{!-- {{input type="email" id="inputEmail" class=(if model.emailIsValid "form-control is-valid" "form-control") value=model.email placeholder="Your e-mail address" autofocus="autofocus"}} --}}
+            {{!-- [><div class={{if model.emailIsValid "" "invisible"}}><] --}}
+            {{!-- <div class={{if model.validations.attrs.email.isValid "" "invisible"}}> --}}
+              {{!-- [><div class={{if model.emailIsValid "fa fa-check form-control-feedback has-success vertical-align-middle-webkit vertical-align-middle-moz" ""}} aria-hidden="true"></div><] --}}
+              {{!-- <div class={{if model.validations.attrs.email.isValid "fa fa-check form-control-feedback has-success vertical-align-middle-webkit vertical-align-middle-moz" ""}} aria-hidden="true"></div> --}}
+            {{!-- </div> --}}
+          {{!-- </div> --}}
+        {{!-- </div> --}}
+      {{!-- </div> --}}
+      {{!-- <div class={{if messageIsValid "form-group row" "form-group row"}}> --}}
+        {{!-- <div class="col-sm-10"> --}}
+          {{!-- <label for="inputMessage">Message</label> --}}
+          {{!-- <div class="d-flex"> --}}
+            {{!-- {{textarea id="inputMessage" class=(if model.validations.attrs.message.isValid "form-control is-valid" "form-control") value=model.message placeholder="Your message (At least 5 characters)" rows=7}} --}}
+            {{!-- <span class={{if model.validations.attrs.message.isValid "fa fa-check" "invisible"}} aria-hidden="true"></span> --}}
+          {{!-- </div> --}}
+        {{!-- </div> --}}
+      {{!-- </div> --}}
+      {{!-- <div class="form-group row"> --}}
+        {{!-- <div class="col-sm-4"> --}}
+          {{!-- <button class="btn btn-primary btn-block" disabled={{unless model.validations.isValid true false}} {{action 'submitMessage' model}}>Submit</button> --}}
+        {{!-- </div> --}}
+      {{!-- </div> -form model=contact onSubmit=(route-action "submitMessage" model) as |form|}}
+      {{!-- {{#if responseMessage}} --}}
+        {{!-- <div class="alert alert-success">{{responseMessage}}</div> --}}
+      {{!-- {{/if}} --}}
+    {{!-- </form> --}}
 
-      {{#if responseMessage}}
-        <div class="alert alert-success">{{responseMessage}}</div>
-      {{/if}}
-    </form>
+  {{#bs-form model=contact onSubmit=(route-action "submitMessage" contact) as |form|}}
+
+    {{!-- this doesn't work! --}}
+    {{!-- {{#form.element label="Email Address" property="email" as |el|}} --}}
+      {{!-- <div class="input-group"> --}}
+        {{!-- <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span> --}}
+        {{!-- <input value={{el.value}} class="form-control" oninput={{action (mut el.value) value="target.value"}} id={{el.id}} type="email"> --}}
+      {{!-- </div> --}}
+    {{!-- {{/form.element}} --}}
+
+    {{!-- this works! --}}
+    {{form.element controlType="email" label="Email Address" property="email"}}
+
+    {{!-- the rest of the form --}}
+    {{form.element controlType="textarea" label="Message" placeholder="Your message" property="message" rows=6}}
+    {{bs-button defaultText="Submit" type="primary" buttonType="submit" disabled=(unless contact.validations.isValid true false)}}
+  {{/bs-form}}
+
   </div>
 </div>

@@ -1,0 +1,68 @@
+<div class="container flex-grow mt-5">
+  <div class="row">
+    <section class="col-md-5">
+      <h2 class="section-title d-flex align-items-center">
+        <span class="fa-stack icon-size">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+        </span>
+        Career Profile
+      </h2>
+    </section>
+    <div class="col-md-7">
+      <section>{{resume.name}}</section>
+    </div>
+  </div>
+
+  <div class="row">
+    <section class="col-md-5">
+      <h2 class="section-title d-flex align-items-center">
+        <span class="fa-stack icon-size">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
+        </span>
+        Experience
+      </h2>
+    </section>
+
+    <section class="col-md-7">
+      {{#each resume.resumeCareerItems as |resumeCareerItem|}}
+        {{resume-career-item resumeCareerItem=resumeCareerItem saveEdit=(route-action 'saveEdit') deleteResumeCareerItem=(route-action 'deleteResumeCareerItem') addJobDescription=(route-action 'addJobDescription') deleteJobDescription=(route-action 'deleteJobDescription')}}
+      {{/each}}
+      {{bs-button class="align-self-center fa fa-plus" onClick=(route-action "toggle")}}
+      {{#bs-collapse collapsed=collapsed}}
+        {{resume-career-item resumeCareerItem=resumeCareerItem saveEdit=(route-action 'saveEdit') deleteResumeCareerItem=(route-action 'deleteResumeCareerItem') addJobDescription=(route-action 'addJobDescription') deleteJobDescription=(route-action 'deleteJobDescription')}}
+      {{/bs-collapse}}
+
+    </section>
+
+  </div>
+
+  <div class="row">
+    <section class="col-md-5">
+      <h2 class="section-title d-flex align-items-center">
+        <span class="fa-stack icon-size">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+        </span>
+        Education
+      </h2>
+    </section>
+    <section class="col-md-7">
+      <div class="item">
+        <div class="upper-row">
+          <h3 class="job-title">Bachelor of Science - Economics</h3>
+          <div class="time">2005 - 2009</div>
+        </div>
+        <div class="company">University of Washington</div>
+      </div>
+      <div class="item">
+        <div class="upper-row">
+          <h3 class="job-title">Certificate in JavaScript Development</h3>
+          <div class="time">2015</div>
+        </div>
+        <div class="company">Code Fellows</div>
+      </div>
+    </section>
+  </div>
+</div>

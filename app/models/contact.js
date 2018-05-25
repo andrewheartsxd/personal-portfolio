@@ -1,15 +1,20 @@
 import DS from 'ember-data';
+import {validator, buildValidations} from 'ember-cp-validations';
 
-export default DS.Model.extend({
+const Validations = buildValidations({
+  email: [
+    validator('presence', true),
+    validator('format', {type: 'email'})
+  ],
+  message: [
+    validator('presence', true),
+    validator('length', {
+      min: 5
+    })
+  ]
+});
 
+export default DS.Model.extend(Validations, {
   email: DS.attr('string'),
-
-  message: DS.attr('string'),
-
-  emailIsValid: Ember.computed.match('email', /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
-
-  messageIsValid: Ember.computed.gte('message.length', 5),
-
-  isValid: Ember.computed.and('emailIsValid', 'messageIsValid')
-  
+  message: DS.attr('string')
 });
